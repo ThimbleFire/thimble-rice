@@ -7,7 +7,7 @@ sudo pacman -Syu --noconfirm
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
 
 # Install packages from official repos
-sudo pacman -S --noconfirm vim git htop dolphin
+sudo pacman -S --noconfirm vim git htop dolphin rofi
 
 # Install AUR helper (yay) if not already installed 
 if !command -v yay &> /dev/null; then
@@ -18,7 +18,19 @@ if !command -v yay &> /dev/null; then
   rm -rf yay
 fi
 
-yay -S --noconfirm brave-bin arc steam
+# Install Rofi (extra)
+git clone --depth=1 https://github.com/adi1090x/rofi.git
+cd rofi
+chmod +x setup.sh
+bash setup.sh
+
+# Wallpaper manager
+git clone https://github.com/LGFae/swww
+cd swww
+cargo build --release
+echo "Put both binaries target/release/swww and target/release/swww-daemon in your path."
+
+yay -S --noconfirm brave-bin arc steam alacritty
 
 # Install fan software
 echo "Install fan software? (y/n)"
