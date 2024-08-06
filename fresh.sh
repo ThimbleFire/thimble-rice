@@ -7,7 +7,7 @@ sudo pacman -Syu --noconfirm
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
 
 # Install packages from official repos
-sudo pacman -S --noconfirm vim git htop
+sudo pacman -S --noconfirm vim git htop dolphin
 
 # Install AUR helper (yay) if not already installed 
 if !command -v yay &> /dev/null; then
@@ -18,7 +18,7 @@ if !command -v yay &> /dev/null; then
   rm -rf yay
 fi
 
-yay -S --noconfirm Brave-bin 
+yay -S --noconfirm brave-bin arc steam
 
 # Install fan software
 echo "Install fan software? (y/n)"
