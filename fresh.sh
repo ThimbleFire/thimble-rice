@@ -7,7 +7,7 @@ sudo pacman -Syu --noconfirm
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
 
 # Install packages from official repos
-sudo pacman -S --noconfirm vim git htop dolphin rofi neofetch
+sudo pacman -S --noconfirm vim git htop dolphin rofi neofetch sdl3
 
 # Install AUR helper (yay) if not already installed 
 if !command -v yay &> /dev/null; then
@@ -18,11 +18,17 @@ if !command -v yay &> /dev/null; then
   rm -rf yay
 fi
 
+# If sdl3 isn't out yet, install sdl2
+if !command -v sdl &> /dev/null; then
+  sudo pacman -S --noconfirm sdl2
+fi
+
 # Install Rofi (extra)
 git clone --depth=1 https://github.com/adi1090x/rofi.git
 cd rofi
 chmod +x setup.sh
 bash setup.sh
+cd ~
 
 # Wallpaper manager
 git clone https://github.com/LGFae/swww
